@@ -1,0 +1,4 @@
+README.txt
+lib/ffi-chm.rb
+lib/ffi-chm/func.rb
+lib/ffi-chm/const.rb

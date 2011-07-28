@@ -1,0 +1,11 @@
+require 'chm'
+
+  def compatibility(path)
+    yield ::Chmlib::Chm.new(path), ::FFI::Chm::ChmFile.new(path)
+  end
+  
+  def test_methods
+    compatibility("/home/nanki/Downloads/ruby-refm-1.9.2-20110529.chm") do |chm, ffi|
+      assert_equal chm.home, ffi.home
+    end
+  end
