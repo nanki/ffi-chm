@@ -8,6 +8,8 @@ require 'ffi-chm/const'
 require 'ffi-chm/api'
 
 module FFI::Chm
+  autoload :Struct, 'ffi-chm/struct'
+
   include API
   include Const
 

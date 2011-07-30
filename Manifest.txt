@@ -2,3 +2,4 @@ README.txt
 lib/ffi-chm.rb
 lib/ffi-chm/api.rb
 lib/ffi-chm/const.rb
+lib/ffi-chm/struct.rb
