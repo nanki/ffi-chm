@@ -1,7 +1,13 @@
 module FFI::Chm
   class ChmFile
-    def initialize(fn)
-      @h = API.chm_open fn
+    def initialize(fn, &block)
+      @fn = fn
+      self.open &block if block_given?
+    end
+
+    def open(fn=@fn, &block)
+      @fn = fn
+      @h = API.chm_open @fn
       raise ChmError, "Not exists?" if @h.null?
       if block_given?
         begin
@@ -9,6 +15,8 @@ module FFI::Chm
         ensure
           self.close
         end
+      else
+        self
       end
     end
 
