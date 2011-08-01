@@ -1,13 +1,15 @@
 module FFI::Chm
   class ChmFile
-    def initialize(fn, &block)
-      @fn = fn
+    attr_reader :path
+
+    def initialize(path, &block)
+      @path = path
       self.open &block if block_given?
     end
 
-    def open(fn=@fn, &block)
-      @fn = fn
-      @h = API.chm_open @fn
+    def open(path=@path, &block)
+      @path = path
+      @h = API.chm_open @path
       raise ChmError, "Not exists?" if @h.null?
       if block_given?
         begin
