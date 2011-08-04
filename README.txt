@@ -9,12 +9,15 @@ Ruby bindings for the libchm via FFI.
 == FEATURES/PROBLEMS:
 
 * Provides basic access to the CHM files.
+* Some functionalities to access to internal structure.
 * Currently developed on MRI 1.8.7 / 1.9.2
 
 == SYNOPSIS:
 
   FFI::Chm::ChmFile.new("reference-manual.chm") do |chm|
     chm.enumerate(:normal, :files).map{|ui| ui[:path]}
+
+    puts chm.title
   end
 
 == REQUIREMENTS:
