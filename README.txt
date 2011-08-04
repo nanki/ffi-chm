@@ -9,7 +9,7 @@ Ruby bindings for the libchm via FFI.
 == FEATURES/PROBLEMS:
 
 * Provides basic access to the CHM files.
-* Currently developed on MRI 1.8 / 1.9
+* Currently developed on MRI 1.8.7 / 1.9.2
 
 == SYNOPSIS:
 

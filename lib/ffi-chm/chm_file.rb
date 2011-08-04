@@ -1,5 +1,8 @@
 module FFI::Chm
   class ChmFile
+    require 'ffi-chm/chm_file/aux'
+    include Aux
+
     attr_reader :path
 
     def initialize(path, &block)
