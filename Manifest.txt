@@ -13,6 +13,7 @@ lib/ffi-chm/struct/fulltext_index.rb
 lib/ffi-chm/struct/hhc/entry.rb
 lib/ffi-chm/struct/hhk/entry.rb
 lib/ffi-chm/struct/hhx_document.rb
+lib/ffi-chm/struct/sr.rb
 lib/ffi-chm/struct/system/code3.rb
 lib/ffi-chm/struct/system/code4.rb
 lib/ffi-chm/struct/system/code6.rb
@@ -27,3 +28,4 @@ lib/ffi-chm/struct/url_table.rb
 lib/ffi-chm/struct.rb
 lib/ffi-chm/unit_info.rb
 lib/ffi-chm.rb
+test/test_sr.rb

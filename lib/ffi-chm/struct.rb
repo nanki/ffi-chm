@@ -9,4 +9,5 @@ module FFI::Chm::Struct
   autoload :HHXDocument, 'ffi-chm/struct/hhx_document'
   autoload :URLTable, 'ffi-chm/struct/url_table'
   autoload :URLString, 'ffi-chm/struct/url_string'
+  autoload :SR, 'ffi-chm/struct/sr'
 end
