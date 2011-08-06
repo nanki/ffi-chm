@@ -43,8 +43,28 @@ module FFI::Chm::ChmFile::Aux
     BinData::Stringz.new.read io
   end
 
+  def url_table(offset)
+    io = StringIO.new raw_urltbl
+    io.seek offset
+    Struct::URLTable::URLTableRecord.new.read(io)
+  end
+
+  def url_string(offset)
+    io = StringIO.new raw_urlstr
+    io.seek offset
+    FFI::Chm::Struct::URLString.new.read io
+  end
+
   private
   def raw_strings
     @strings ||= retrieve_object("/#STRINGS").freeze
+  end
+
+  def raw_urltbl
+    @urltbl ||= retrieve_object("/#URLTBL").freeze
+  end
+
+  def raw_urlstr
+    @urlstr ||= retrieve_object("/#URLSTR").freeze
   end
 end
