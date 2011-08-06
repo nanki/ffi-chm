@@ -36,4 +36,15 @@ module FFI::Chm::ChmFile::Aux
       @index = v if cache
     end
   end
+
+  def string(offset)
+    io = StringIO.new raw_strings
+    io.seek offset
+    BinData::Stringz.new.read io
+  end
+
+  private
+  def raw_strings
+    @strings ||= retrieve_object("/#STRINGS").freeze
+  end
 end
