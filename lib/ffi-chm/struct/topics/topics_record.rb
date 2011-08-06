@@ -17,7 +17,7 @@ class FFI::Chm::Struct::Topics::TopicsRecord < BinData::Record
     @chm.url_string(table.offset_in_urlstr).local
   end
 
-  def set_context(chm)
+  def set_context(chm)# :nodoc:
     @chm = chm
   end
 end

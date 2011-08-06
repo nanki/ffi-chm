@@ -14,7 +14,7 @@ class FFI::Chm::Struct::Topics < BinData::Record
     end
   end
 
-  def set_context(chm)
+  def set_context(chm)# :nodoc:
     @chm = chm
   end
 end

@@ -4,10 +4,12 @@ require 'ffi-chm/com8ble'
 module FFI::Chm::ChmFile::Aux
   include FFI::Chm
 
+  # /#SYSTEM
   def system
     @system ||= Struct::System.new.read retrieve_object("/#SYSTEM")
   end
 
+  # /#TOPICS
   def topics
     unless @topics
       @topics = Struct::Topics.new.read retrieve_object("/#TOPICS")
@@ -46,22 +48,26 @@ module FFI::Chm::ChmFile::Aux
     end
   end
 
+  # /$FIftiMain
   def fulltext_index
     @fulltext_index ||= Struct::FulltextIndex.new.read retrieve_object("/$FIftiMain")
   end
 
+  # /#STRINGS
   def string(offset)
     io = StringIO.new raw_strings
     io.seek offset
     BinData::Stringz.new.read io
   end
 
+  # /#URLTBL
   def url_table(offset)
     io = StringIO.new raw_urltbl
     io.seek offset
     Struct::URLTable::URLTableRecord.new.read(io)
   end
 
+  # /#URLSTR
   def url_string(offset)
     io = StringIO.new raw_urlstr
     io.seek offset
