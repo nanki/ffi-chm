@@ -5,7 +5,7 @@ module FFI::Chm::ChmFile::Aux
   include FFI::Chm
 
   def system
-    @system ||= Struct::System.new.read self.retrieve_object("/#SYSTEM")
+    @system ||= Struct::System.new.read retrieve_object("/#SYSTEM")
   end
 
   def encoding
@@ -18,7 +18,7 @@ module FFI::Chm::ChmFile::Aux
 
   def contents(cache=true)
     return @contents if @contents
-    xml = self.retrieve_object("/#{self.system.record(6).data.compiled_file}.hhc").com8ble.force_encoding(encoding).encode("UTF-8")
+    xml = retrieve_object("/#{self.system.record(6).data.compiled_file}.hhc").com8ble.force_encoding(encoding).encode("UTF-8")
     doc = Struct::HHXDocument.new(Struct::HHC::Entry)
     Nokogiri::HTML::SAX::Parser.new(doc).parse(xml)
 
@@ -29,7 +29,7 @@ module FFI::Chm::ChmFile::Aux
 
   def index(cache=true)
     return @index if @index
-    xml = self.retrieve_object("/#{self.system.record(6).data.compiled_file}.hhk").com8ble.force_encoding(encoding).encode("UTF-8")
+    xml = retrieve_object("/#{self.system.record(6).data.compiled_file}.hhk").com8ble.force_encoding(encoding).encode("UTF-8")
     doc = Struct::HHXDocument.new(Struct::HHK::Entry)
     Nokogiri::HTML::SAX::Parser.new(doc).parse(xml)
     doc.root.flatten.tap do |v|
