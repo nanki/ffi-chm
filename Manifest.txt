@@ -4,6 +4,12 @@ lib/ffi-chm/chm_file/aux.rb
 lib/ffi-chm/chm_file.rb
 lib/ffi-chm/com8ble.rb
 lib/ffi-chm/const.rb
+lib/ffi-chm/struct/encint.rb
+lib/ffi-chm/struct/fulltext_index/index/index_record.rb
+lib/ffi-chm/struct/fulltext_index/index.rb
+lib/ffi-chm/struct/fulltext_index/leaf/leaf_record.rb
+lib/ffi-chm/struct/fulltext_index/leaf.rb
+lib/ffi-chm/struct/fulltext_index.rb
 lib/ffi-chm/struct/hhc/entry.rb
 lib/ffi-chm/struct/hhk/entry.rb
 lib/ffi-chm/struct/hhx_document.rb
@@ -12,6 +18,12 @@ lib/ffi-chm/struct/system/code4.rb
 lib/ffi-chm/struct/system/code6.rb
 lib/ffi-chm/struct/system/system_record.rb
 lib/ffi-chm/struct/system.rb
+lib/ffi-chm/struct/topics/topics_record.rb
+lib/ffi-chm/struct/topics.rb
+lib/ffi-chm/struct/url_string.rb
+lib/ffi-chm/struct/url_table/url_table_block.rb
+lib/ffi-chm/struct/url_table/url_table_record.rb
+lib/ffi-chm/struct/url_table.rb
 lib/ffi-chm/struct.rb
 lib/ffi-chm/unit_info.rb
 lib/ffi-chm.rb
