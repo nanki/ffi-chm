@@ -8,6 +8,15 @@ module FFI::Chm::ChmFile::Aux
     @system ||= Struct::System.new.read retrieve_object("/#SYSTEM")
   end
 
+  def topics
+    unless @topics
+      @topics = Struct::Topics.new.read retrieve_object("/#TOPICS")
+      @topics.set_context self
+    end
+
+    @topics
+  end
+
   def encoding
     @encoding ||= self.system.encoding
   end

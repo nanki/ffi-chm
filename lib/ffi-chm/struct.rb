@@ -1,6 +1,7 @@
 require 'bindata'
 
 module FFI::Chm::Struct
+  autoload :Topics, 'ffi-chm/struct/topics'
   autoload :System, 'ffi-chm/struct/system'
   autoload :HHK, 'ffi-chm/struct/hhk/entry'
   autoload :HHC, 'ffi-chm/struct/hhc/entry'
