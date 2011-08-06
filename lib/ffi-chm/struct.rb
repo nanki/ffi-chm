@@ -1,6 +1,7 @@
 require 'bindata'
 
 module FFI::Chm::Struct
+  autoload :FulltextIndex, 'ffi-chm/struct/fulltext_index'
   autoload :Topics, 'ffi-chm/struct/topics'
   autoload :System, 'ffi-chm/struct/system'
   autoload :HHK, 'ffi-chm/struct/hhk/entry'

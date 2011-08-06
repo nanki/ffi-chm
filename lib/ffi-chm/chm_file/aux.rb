@@ -46,6 +46,10 @@ module FFI::Chm::ChmFile::Aux
     end
   end
 
+  def fulltext_index
+    @fulltext_index ||= Struct::FulltextIndex.new.read retrieve_object("/$FIftiMain")
+  end
+
   def string(offset)
     io = StringIO.new raw_strings
     io.seek offset
