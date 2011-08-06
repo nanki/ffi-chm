@@ -1,10 +1,10 @@
 class FFI::Chm::Struct::System < BinData::Record
-  require 'ffi-chm/struct/system/record'
+  require 'ffi-chm/struct/system/system_record'
 
   endian :little
 
   uint32 :version
-  array :records, :type => :record, :read_until => :eof
+  array :records, :type => :system_record, :read_until => :eof
 
 
   def record(code)

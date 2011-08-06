@@ -10,7 +10,7 @@ lib/ffi-chm/struct/hhx_document.rb
 lib/ffi-chm/struct/system/code3.rb
 lib/ffi-chm/struct/system/code4.rb
 lib/ffi-chm/struct/system/code6.rb
-lib/ffi-chm/struct/system/record.rb
+lib/ffi-chm/struct/system/system_record.rb
 lib/ffi-chm/struct/system.rb
 lib/ffi-chm/struct.rb
 lib/ffi-chm/unit_info.rb

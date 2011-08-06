@@ -1,4 +1,4 @@
-class FFI::Chm::Struct::System::Record < BinData::Record
+class FFI::Chm::Struct::System::SystemRecord < BinData::Record
   require 'ffi-chm/struct/system/code3'
   require 'ffi-chm/struct/system/code4'
   require 'ffi-chm/struct/system/code6'
