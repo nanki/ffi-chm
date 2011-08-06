@@ -27,6 +27,9 @@ module Com8ble
       end
     end
   end
+
+  require 'enumerator'
+  Enumerator = ::Enumerator rescue ::Enumerable::Enumerator
 end
 
 class String

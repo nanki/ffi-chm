@@ -55,13 +55,12 @@ module FFI::Chm
       raise RetrieveError, ui
     end
 
-    require 'enumerator'
     def enumerate(*what, &block)
       if block_given?
         API.chm_enumerate @h, to_flags(what), enum_func(&block), nil
         self
       else
-        (Enumerable::Enumerator rescue Enumerator).new self, :enumerate, to_flags(what)
+        Com8ble::Enumerator.new self, :enumerate, to_flags(what)
       end
     end
 
@@ -70,7 +69,7 @@ module FFI::Chm
         API.chm_enumerate_dir @h, prefix, to_flags(what), enum_func(&block), nil
         self
       else
-        (Enumerable::Enumerator rescue Enumerator).new self, :enumerate_dir, prefix, to_flags(what)
+        Com8ble::Enumerator.new self, :enumerate_dir, prefix, to_flags(what)
       end
     end
 
