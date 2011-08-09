@@ -2,6 +2,7 @@ class FFI::Chm::Struct::FulltextIndex < BinData::Record
   endian :little
 
   hide :unknown1, :unknown2, :unknown3, :unknown4, :unknown5, :unknown6, :unknown7, :unknown8, :unknown9, :unknown10, :rest
+  hide :document_scale, :encoding_scale, :location_code_scale
 
   uint32 :unknown1
   uint32 :num_files
