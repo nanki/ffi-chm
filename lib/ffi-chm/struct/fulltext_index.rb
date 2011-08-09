@@ -2,7 +2,7 @@ class FFI::Chm::Struct::FulltextIndex < BinData::Record
   endian :little
 
   hide :unknown1, :unknown2, :unknown3, :unknown4, :unknown5, :unknown6, :unknown7, :unknown8, :unknown9, :unknown10, :rest
-  hide :document_scale, :encoding_scale, :location_code_scale
+  hide :document_scale, :code_count_scale, :location_code_scale
 
   uint32 :unknown1
   uint32 :num_files
@@ -14,8 +14,8 @@ class FFI::Chm::Struct::FulltextIndex < BinData::Record
   uint32 :unknown4
   uint8 :document_scale
   uint8 :document_root
-  uint8 :encoding_scale
-  uint8 :encoding_root
+  uint8 :code_count_scale
+  uint8 :code_count_root
   uint8 :location_code_scale
   uint8 :location_code_root
   string :unknown5, :read_length => 10
