@@ -1,4 +1,6 @@
 class FFI::Chm::Struct::System < BinData::Record
+  class NoRecordError < StandardError;end
+
   require 'ffi-chm/struct/system/system_record'
 
   endian :little
@@ -9,6 +11,7 @@ class FFI::Chm::Struct::System < BinData::Record
 
   def record(code)
     @memo ||= Hash[*records.map{|v|[v.code.to_i, v]}.flatten]
+    raise NoRecordError, "/#SYSTEM has no record code:#{code}" unless @memo.has_key? code
     @memo[code]
   end
 
