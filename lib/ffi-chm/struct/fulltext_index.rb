@@ -46,8 +46,8 @@ class FFI::Chm::Struct::FulltextIndex < BinData::Record
   require 'ffi-chm/struct/fulltext_index/leaf'
   require 'ffi-chm/struct/fulltext_index/index'
 
-  def nodedata(offset)
-    rest[offset - 1024, node_size]
+  def nodedata(offset, size=node_size)
+    rest[offset - 1024, size]
   end
 
   def root
