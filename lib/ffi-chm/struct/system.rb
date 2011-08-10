@@ -12,12 +12,12 @@ class FFI::Chm::Struct::System < BinData::Record
     @memo[code]
   end
 
+  LCID2ENCODING = {
+    1041 => "CP932", # SJIS
+    2052 => "CP936" # GB2313
+  }
+
   def encoding
-    case self.record(4).data.lcid.to_i
-    when 1041
-      "CP932"
-    else
-      "UTF-8"
-    end
+    LCID2ENCODING[self.record(4).data.lcid.to_i] || "CP1252" # ANSI
   end
 end
