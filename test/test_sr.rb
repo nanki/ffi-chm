@@ -45,9 +45,9 @@ class TestSR < Test::Unit::TestCase
     rs, expects, bits = @testset.transpose
     bits = bits.join
     bits += "0" * bits.size % 8
-    wcls = BinData::IO.new [bits].pack("B*")
+    wlcs = BinData::IO.new [bits].pack("B*")
 
-    values = rs.map{|r| FFI::Chm::Struct::SR.new(:r => r).read(wcls)}
+    values = rs.map{|r| FFI::Chm::Struct::SR.new(:r => r).read(wlcs)}
 
     assert_equal expects, values
   end
