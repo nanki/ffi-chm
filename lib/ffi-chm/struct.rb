@@ -10,4 +10,5 @@ module FFI::Chm::Struct
   autoload :URLTable, 'ffi-chm/struct/url_table'
   autoload :URLString, 'ffi-chm/struct/url_string'
   autoload :SR, 'ffi-chm/struct/sr'
+  autoload :WLC, 'ffi-chm/struct/wlc'
 end
