@@ -4,7 +4,8 @@ class FFI::Chm::Struct::Topics::TopicsRecord < BinData::Record
   uint32 :offset_in_tocidx
   uint32 :offset_in_strings
   uint32 :offset_in_urltbl
-  uint32 :unknown
+  uint16 :in_contents # 2: not in contents, 6: in contents
+  uint16 :unknown
 
   hide :unknown
 

@@ -10,5 +10,7 @@ class FFI::Chm::Struct::WLC < BinData::Record
     sr :location_code, :r => :location_code_root
   end
 
+  hide :code_count
+
   resume_byte_alignment
 end
