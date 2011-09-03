@@ -18,7 +18,7 @@ module FFI::Chm::Struct
       when "param"
         return unless @entry
         attr = {}
-        attributes.each_slice(2){|k, v| attr[k.intern] = v}
+        attributes.each{|k, v| attr[k.intern] = v }
         @entry[attr[:name].intern] = attr[:value]
       when "li"
         @entry = @klass.new
