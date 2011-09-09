@@ -11,11 +11,8 @@ module FFI::Chm::ChmFile::Aux
 
   # /#TOPICS
   def topics
-    unless @topics
-      @topics = Struct::Topics.new.read retrieve_object("/#TOPICS")
-      @topics.set_context self
-    end
-
+    @topics ||= Struct::Topics.new.read retrieve_object("/#TOPICS")
+    @topics.set_context self
     @topics
   end
 
@@ -55,9 +52,14 @@ module FFI::Chm::ChmFile::Aux
 
   # /#STRINGS
   def string(offset)
-    io = StringIO.new raw_strings
-    io.seek offset
-    BinData::Stringz.new.read io
+    @string ||= {}
+    if @string.has_key? offset
+      @string[offset]
+    else
+      io = StringIO.new raw_strings
+      io.seek offset
+      @string[offset] = BinData::Stringz.new.read(io).to_s.com8ble.force_encoding(encoding).encode("UTF-8")
+    end
   end
 
   # /#URLTBL

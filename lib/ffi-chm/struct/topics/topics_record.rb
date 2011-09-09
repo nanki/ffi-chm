@@ -10,7 +10,7 @@ class FFI::Chm::Struct::Topics::TopicsRecord < BinData::Record
   hide :unknown
 
   def title
-    @chm.string offset_in_strings
+    @chm.string(offset_in_strings) rescue nil
   end
 
   def local

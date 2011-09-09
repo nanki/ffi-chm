@@ -15,4 +15,16 @@ class FFI::Chm::Struct::SR < BinData::Primitive
     ret += 2 << (eval_parameter(:r) + size - 3) if size > 1
     ret
   end
+
+  module Shortcut
+    def prefix
+      @struct[:prefix]
+    end
+
+    def bits
+      @struct[:bits]
+    end
+  end
+
+  include Shortcut
 end

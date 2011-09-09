@@ -47,6 +47,7 @@ module FFI::Chm
       if UnitInfo === ui
         buf = FFI::Buffer.new ui[:length]
         API.chm_retrieve_object @h, ui, buf, 0, ui[:length]
+        # use read_string for JRuby
         buf.read_bytes buf.size
       else
         retrieve_object resolve_object(ui)
