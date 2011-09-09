@@ -50,7 +50,35 @@ class FFI::Chm::Struct::FulltextIndex < BinData::Record
     rest[offset - 1024, size]
   end
 
+  def leaf(offset)
+    FFI::Chm::Struct::FulltextIndex::Leaf.new.read(self.nodedata(offset))
+  end
+
+  def single_leaf?
+    self.depth == 1
+  end
+
   def root
-    @root ||= Index.new.read(self.nodedata(self.offset_to_root))
+    @root ||= (single_leaf? ? Leaf : Index).new.read(self.nodedata(self.offset_to_root))
+  end
+
+  def wlc_params
+    {
+      :document_root      => self.document_root,
+      :code_count_root    => self.code_count_root,
+      :location_code_root => self.location_code_root
+    }
+  end
+
+  def wlcs(leaf)
+    @wlcs ||= {}
+    if @wlcs.has_key? leaf.offset_of_wlcs
+      @wlcs[leaf.offset_of_wlcs]
+    else
+      data = BinData::IO.new self.nodedata(leaf.offset_of_wlcs, leaf.length_of_wlcs)
+      @wlcs[leaf.offset_of_wlcs] = leaf.num_wlcs.times.map do
+        FFI::Chm::Struct::WLC.new(self.wlc_params).read(data)
+      end
+    end
   end
 end

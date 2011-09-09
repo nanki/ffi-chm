@@ -10,6 +10,7 @@ Ruby bindings for the libchm via FFI.
 
 * Provides basic access to the CHM files.
 * Some functionalities to access to internal structure.
+* Fulltext search.
 * Currently developed on MRI 1.8.7 / 1.9.2
 
 == SYNOPSIS:
@@ -25,6 +26,7 @@ Ruby bindings for the libchm via FFI.
 * Ruby
 * libffi
 * libchm
+* Nokogiri >= 1.5.0
 
 == INSTALL:
 

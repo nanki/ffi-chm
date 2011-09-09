@@ -25,6 +25,7 @@ lib/ffi-chm/struct/url_string.rb
 lib/ffi-chm/struct/url_table/url_table_block.rb
 lib/ffi-chm/struct/url_table/url_table_record.rb
 lib/ffi-chm/struct/url_table.rb
+lib/ffi-chm/struct/wlc.rb
 lib/ffi-chm/struct.rb
 lib/ffi-chm/unit_info.rb
 lib/ffi-chm.rb

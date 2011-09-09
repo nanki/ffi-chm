@@ -76,6 +76,26 @@ module FFI::Chm::ChmFile::Aux
     FFI::Chm::Struct::URLString.new.read io
   end
 
+  def fulltext_search(pattern, options={}, &block)
+    pattern = pattern.com8ble.force_encoding('UTF-8').encode(self.encoding).force_encoding("ASCII-8BIT")
+    context =
+      case options[:context]
+      when :title
+        0
+      when :body
+        1
+      end
+
+    case fulltext_index.depth.to_i
+    when 1
+      search_inner_prefix fulltext_index.root.to_a, pattern, context, &block
+    when 2
+      search_inner_prefix fulltext_index.root.records, pattern, context, &block
+    else
+      raise "Index tree is too deep(#{fulltext_index.depth})."
+    end
+  end
+
   private
   def raw_strings
     @strings ||= retrieve_object("/#STRINGS").freeze
@@ -87,5 +107,33 @@ module FFI::Chm::ChmFile::Aux
 
   def raw_urlstr
     @urlstr ||= retrieve_object("/#URLSTR").freeze
+  end
+
+  def search_inner_prefix(records, pattern, context, &block)
+    word = ""
+    records.each do |r|
+      word = word[0, r.position] + r.word
+      len = pattern.length
+      #len = [pattern.length, word.length].min
+      comp = word[0, len] <=> pattern[0, len]
+
+      case r
+      when Struct::FulltextIndex::Leaf::LeafRecord
+        case comp
+        when -1
+          next
+        when 1
+          break
+        else
+          next if context && context == r.context
+          #block.call fulltext_index.wlcs(r) if context == r.context
+          block.call r
+        end
+      when Struct::FulltextIndex::Index::IndexRecord
+        next if comp == -1
+        search_inner_prefix(fulltext_index.leaf(r.offset_of_leaf).records, pattern, context, &block)
+        break if comp == 1
+      end
+    end
   end
 end
