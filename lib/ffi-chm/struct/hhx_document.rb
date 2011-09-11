@@ -29,7 +29,7 @@ module FFI::Chm::Struct
       end
     end
 
-    def end_element(name, *attributes)
+    def end_element(name)
       case name
       when "object" # li results broken structure.
         @heads.last << @entry if @entry

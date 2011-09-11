@@ -26,7 +26,8 @@ module FFI::Chm::ChmFile::Aux
 
   def contents(cache=true)
     return @contents if @contents
-    xml = retrieve_object("/#{self.system.record(6).data.compiled_file}.hhc").com8ble.force_encoding(encoding).encode("UTF-8")
+    path = enumerate(:normal, :files).detect{|v| v.path.end_with? '.hhc' }.path
+    xml = retrieve_object(path).com8ble.force_encoding(encoding).encode("UTF-8")
     doc = Struct::HHXDocument.new(Struct::HHC::Entry)
     Nokogiri::HTML::SAX::Parser.new(doc).parse(xml)
 
@@ -37,7 +38,8 @@ module FFI::Chm::ChmFile::Aux
 
   def index(cache=true)
     return @index if @index
-    xml = retrieve_object("/#{self.system.record(6).data.compiled_file}.hhk").com8ble.force_encoding(encoding).encode("UTF-8")
+    path = enumerate(:normal, :files).detect{|v| v.path.end_with? '.hhk' }.path
+    xml = retrieve_object(path).com8ble.force_encoding(encoding).encode("UTF-8")
     doc = Struct::HHXDocument.new(Struct::HHK::Entry)
     Nokogiri::HTML::SAX::Parser.new(doc).parse(xml)
     doc.root.flatten.tap do |v|

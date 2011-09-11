@@ -14,6 +14,10 @@ module FFI::Chm
       flag? :files
     end
 
+    def path
+      self[:path].to_s
+    end
+
     %w(normal special meta).each do |name|
       define_method("#{name}?") do
         flag? name.intern
